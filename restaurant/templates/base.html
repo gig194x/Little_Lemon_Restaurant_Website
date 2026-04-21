@@ -1,0 +1,25 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Little Lemon</title>
+
+    <link rel="stylesheet" href="{% static 'restaurant/css/style.css' %}">
+
+    <meta name="description" content="A brief description" />
+    <meta name="author" content="">
+  </head>
+
+  <body>
+
+{% include 'restaurant/html/header.html' %}
+    {% block content %}
+    {% endblock %}
+
+    {% include 'restaurant/html/footer.html' %}
+
+  </body>
+</html>

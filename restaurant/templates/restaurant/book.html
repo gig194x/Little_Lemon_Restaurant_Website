@@ -1,0 +1,181 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section>
+  <article>
+    <h1>Make a reservation</h1>
+
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li class="{{ message.tags }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div class="book-container">
+      <!-- Form Column -->
+      <div class="form-column">
+        <form action="" method="post" class="book-form">
+          {% csrf_token %}
+
+          <!-- Row 1: Name & Email -->
+          <div class="input-row">
+            <div class="input-field">
+              {{ form.name.label_tag }} {{ form.name }}
+            </div>
+            <div class="input-field">
+              {{ form.email.label_tag }} {{ form.email }}
+            </div>
+          </div>
+
+          <!-- Row 2: Phone & Date & Time -->
+          <div class="input-row">
+            <div class="input-field">
+              {{ form.phone.label_tag }} {{ form.phone }}
+            </div>
+            <div class="input-field">
+              {{ form.date.label_tag }} {{ form.date }}
+            </div>
+            <div class="input-field">
+              {{ form.time.label_tag }} {{ form.time }}
+            </div>
+          </div>
+
+          <!-- Row 3: Guests -->
+          <div class="input-row">
+            <div class="input-field">
+              {{ form.guests.label_tag }} {{ form.guests }}
+            </div>
+          </div>
+
+          <input type="submit" value="Reserve" />
+        </form>
+      </div>
+      <!-- End Form Column -->
+
+      <!-- Map Column -->
+      <div class="map-column">
+        <div class="videowrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11898.289517452584!2d-87.60853049433447!3d41.79442860243028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2912ce6f7027%3A0xc0cfb5545d4a37b2!2sHyde%20Park%2C%20Chicago%2C%20IL%2C%20USA!5e0!3m2!1sen!2spt!4v1662384760663!5m2!1sen!2spt"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+      <!-- End Map Column -->
+    </div>
+  </article>
+</section>
+
+<style>
+  /* Container for the two columns */
+  .book-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  /* Form column */
+  .form-column {
+    flex: 1 1 500px;
+  }
+
+  /* Map column */
+  .map-column {
+    flex: 1 1 500px;
+  }
+
+  .videowrap iframe {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+  }
+
+  /* Form styling */
+  .book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Row of inputs */
+  .input-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .input-row .input-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .full-row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Input and select styling */
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="date"],
+  input[type="time"],
+  select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Submit button */
+  input[type="submit"] {
+    padding: 12px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  /* Messages styling */
+  .messages {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+
+  .messages li {
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .messages li.success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 900px) {
+    .booking-container {
+      flex-direction: column;
+    }
+  }
+</style>
+{% endblock %}

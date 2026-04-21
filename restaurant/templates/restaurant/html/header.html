@@ -1,0 +1,14 @@
+{% load static %}
+<footer style="background-color: #ee9972"></footer>
+
+<header>
+  <img src="{% static 'restaurant/img/logo.png' %}" alt="Little Lemon Logo" />
+</header>
+<nav>
+  <ul>
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'menu' %}">Menu</a></li>
+    <li><a href="{% url 'booking' %}">Reservation</a></li>
+  </ul>
+</nav>
